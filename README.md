@@ -1,5 +1,5 @@
 # DIA-YOLO: Diffusion-Based Involution Attention YOLO for Overhead Imagery
-[IEEE Xplore]([https://ieeexplore.ieee.org/document/10902408](https://ieeexplore.ieee.org/abstract/document/11142761)) |[IEEE ACCES 2025 paper]([https://ieeexplore.ieee.org/document/10902408/pdf](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11142761))| [BibTex](#jump1)
+[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11142761) |[IEEE ACCES 2025 paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11142761)| [BibTex](#jump1)
 
 -----------
 ## 요약
