@@ -4,7 +4,7 @@ import gc
 import torch
 
 # MUST set custom path BEFORE any ultralytics import
-CUSTOM_ULTRA_ROOT = "/media/a/f689f84c-a402-4877-ad42-2c66aa8c80b5/AI-CHAMPION_KBS/DIA-YOLO All file/Ultralytics Folder"
+CUSTOM_ULTRA_ROOT = "./Ultralytics Folder"
 sys.path.insert(0, CUSTOM_ULTRA_ROOT)
 
 # Clean any existing ultralytics imports
@@ -16,15 +16,13 @@ import cv2
 import numpy as np
 import math
 import argparse
-
-# NOW import ultralytics from custom path
 import ultralytics
 print("✅ Using ultralytics from:", ultralytics.__file__)
 
 from ultralytics import YOLO
 
-# [PCB]
-# python test-original.py --weight /home/a/Desktop/Vision/KTJ/BEFORE/학위논문/code/runs/obb/attention-768/weights/best.pt --source /home/a/Desktop/Vision/KTJ/BEFORE/학위논문/data/768-marigold/yolo/test/images --dest /home/a/Desktop/Vision/AI-CHAMPION/DIA-YOLO-All-file/Test/result --conf 0.5 --alpha 0.5
+# 사용법
+# python DIA-YOLO-Test.py --weight ./runs/obb/PCB/weights/best.pt --source ./Data/YOLO/test/images --dest ./Result --conf 0.5 --alpha 0.5
 
 def parse_args():
 
@@ -69,8 +67,6 @@ def get_rotated_rect_corners(xc, yc, w, h, angle_rad):
         pts.append((int(x), int(y)))
 
     return pts
-
-
 
 # 아래는 `def main():` 내부, for문부터 저장까지 수정된 코드입니다.
 def main():
