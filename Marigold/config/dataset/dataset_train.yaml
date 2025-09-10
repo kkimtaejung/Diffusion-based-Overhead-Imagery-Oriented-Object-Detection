@@ -1,0 +1,13 @@
+dataset:
+  train:
+    name: mixed
+    prob_ls: [1.0]
+    dataset_list:
+    - name: hypersim
+      disp_name: hypersim_train
+      dir: /home/a/Desktop/Vision/AI-CHAMPION/Marigold-All-file/Hypersim/hypersim/hypersim_processed_train.tar
+      filenames: data_split/hypersim/filename_list_train_filtered.txt
+      resize_to_hw:
+      - 480
+      - 640
+      

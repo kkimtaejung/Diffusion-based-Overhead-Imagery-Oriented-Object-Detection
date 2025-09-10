@@ -1,0 +1,9 @@
+dataset:
+  vis:
+  - name: hypersim
+    disp_name: hypersim_vis
+    dir: /home/a/Desktop/Vision/AI-CHAMPION/Marigold-All-file/Hypersim/hypersim/hypersim_processed_val.tar
+    filenames: data_split/hypersim/selected_vis_sample.txt
+    resize_to_hw:
+    - 480
+    - 640
