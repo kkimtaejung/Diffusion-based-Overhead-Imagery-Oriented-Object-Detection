@@ -115,29 +115,29 @@
 
 <details>
 
- <summary> Marigold (DFF 모듈) </summary>
+Marigold (DFF 모듈)
 
-   <summary> Marigold 학습 </summary>
+  <summary> Marigold 학습 </summary>
 
-   <summary> Marigold 추론 </summary>
+  <summary> Marigold 추론 </summary>
 
 </details>
 
 <details>
   
- <summary> DIA-YOLO </summary>
+DIA-YOLO
 
-   <summary> 모델 구성 </summary>
+<summary> 모델 구성 </summary>
    
-   * [모델 YAML 파일](Model/DIA-YOLO Model.yaml)
-     * [모델 크기](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Model/DIA-YOLO Model.yaml#L0-L10)
+  * [모델 YAML 파일](Model/DIA-YOLO Model.yaml)
+    * [모델 크기](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Model/DIA-YOLO Model.yaml#L0-L10)
 
-   :
+  :
    
 
-   <summary> 학습 과정 </summary>
+<summary> 학습 과정 </summary>
 
-   <summary> 테스트 과정 </summary>
+<summary> 테스트 과정 </summary>
 
 
 </details>
