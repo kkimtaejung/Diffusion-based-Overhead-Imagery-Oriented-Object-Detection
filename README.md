@@ -54,12 +54,20 @@
 - 이후 추정된 깊이 맵을 RGB 영상과 동일한 값의 범위(0 ~ 255)로 정규화를 진행합니다.
 
 - 정규화된 깊이 맵 D와 RGB 영상과의 채널 축 합성을 진행하여 4채널의 RGBD 데이터를 취득합니다.
-  
+
+</details>
+
+<details>
+
  <summary> Involution </summary>
 
 - 기존 YOLO ver.11의 backbone에서 입력단의 Convolution을 Involution으로 대체합니다.
 
 - Involution에서는 동적 커널을 통해 RGBD 데이터의 깊이 정보를 고려하여 위치별로 다른 커널 값을 적용하여 특징을 추출합니다.
+
+</details>
+
+<details>
 
  <summary> CBAM </summary>
 
