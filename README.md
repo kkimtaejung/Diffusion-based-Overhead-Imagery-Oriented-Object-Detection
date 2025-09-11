@@ -129,7 +129,7 @@
     
     * [모델 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L0-L10)
 
-    <img width="862" height="156" alt="image" src="https://github.com/user-attachments/assets/1899b11c-b941-4ead-87e9-b7a03e0ae698" /> 클래스 개수, 입력 채널 수, 모델 크기(n, s, m, l, x) 설정
+    💡 클래스 개수, 입력 채널 수, 모델 크기(n, s, m, l, x) 설정
 
   
   * [학습 코드](DIA-YOLO/Train/DIA-YOLO-Train.py)
