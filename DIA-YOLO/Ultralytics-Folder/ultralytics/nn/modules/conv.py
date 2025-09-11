@@ -58,8 +58,6 @@ class ChannelAttention(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return x * self.act(self.fc(self.pool(x)))
-
-
 class SpatialAttention(nn.Module):
 
     def __init__(self, kernel_size=7):
@@ -71,8 +69,6 @@ class SpatialAttention(nn.Module):
 
     def forward(self, x):
         return x * self.act(self.cv1(torch.cat([torch.mean(x, 1, keepdim=True), torch.max(x, 1, keepdim=True)[0]], 1)))
-
-
 class CBAM(nn.Module):
 
     def __init__(self, c1, kernel_size=7):
