@@ -120,15 +120,19 @@
    <summary> Marigold 학습 </summary>
 
    <summary> Marigold 추론 </summary>
-   
+
+</details>
+
+<details>
+  
  <summary> DIA-YOLO </summary>
 
    <summary> 모델 구성 </summary>
    
-   * [모델 YAML 파일](DIA-YOLO/Model/DIA-YOLO Model.yaml)
-     * [모델 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO Model.yaml#L1-L9)
+   * [모델 YAML 파일](Model/DIA-YOLO Model.yaml)
+     * [모델 크기](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Model/DIA-YOLO Model.yaml#L0-L10)
 
-   : 클래스 개수, 입력 채널, 모델 크기(n, s, m, l, x) 설정
+   :
    
 
    <summary> 학습 과정 </summary>
@@ -136,7 +140,7 @@
    <summary> 테스트 과정 </summary>
 
 
-
+</details>
  
 
  
