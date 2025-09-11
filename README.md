@@ -130,21 +130,66 @@
     * [모델 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L1-L9)
 
       ⮑ 클래스 개수, 입력 채널 수, 모델 크기(n, s, m, l, x) 설정
-      
+
+    * [Backbone](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L11-L23)
+   
+      ⮑ 기존의 YOLO 11 OBB와 다른 점은 입력단이 Involution으로 대체되었음
+
       * [Involution](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Ultralytics-Folder/ultralytics/nn/modules/conv.py/#L27-L49)
      
         ⮑ 4채널이 입력되도록 하기위해 직접 Ultralytics 폴더에 접근하여 Involution 함수를 정의하고 4채널에 맞게 설계해줌 (* yaml 파일만 번경하면 안됨 주의.)
 
-    * [Backbone](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L11-L23)
+    * [Haed](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L25-L46)
+   
+      ⮑ 기존의 YOLO 11 OBB와 다른 점은 Concat 이후 사이사이에 CBAM(Convolution Block Attention Module)이 추가됨
 
-      ⮑ 기존의 YOLO 11 OBB와 다른 점은 입력단이 Involution으로 대체되었음
-
+      * [CBAM](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Ultralytics-Folder/ultralytics/nn/modules/conv.py/#L51-L87)
+     
+        ⮑ Ultralytics 에 내부적으로 제공, 직접 구현해둠
   
   * [학습 코드](DIA-YOLO/Train/DIA-YOLO-Train.py)
 
-    * [임시](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L1-L9)
+    * [Ultralytics 경로 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L1-L7)
+   
+      ⮑ Ultralytics 는 YOLO 학습 시 자동으로 생성되지만, 사용자가 직접 정의하여 내부 파일을 수정함으로써 커스텀 모델 학습이 가능
 
-  * [테스트 코드]()
+    * [모델 정의](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L9-L16)
+   
+      ⮑ 앞선 모델 구성 파일 YAML 경로를 불러와 모델을 생성하고, info()를 통해 4채널 입력 설정이 되었는지 확인
+
+    * [학습](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L18-L31)
+   
+      ⮑ YOLO에서는 다양한 학습 파라미터를 제공, 핵심은 데이터가 저장된 폴더 속 data.yaml 파일을 만들어야 함
+
+      * [데이터 구성 파일](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Data/YOLO/data.yaml/#L1-L7)
+     
+        ⮑ YOLO 데이터는 train/valid/test 폴더 속 이미지(images)/라벨(labels) 폴더로 구성되며 txt 형식을 이룸, 클래스 개수와 각 클래스별 번호 및 이름 정의
+
+  * [테스트 코드](DIA-YOLO/Test/DIA-YOLO-Test.py)
+
+    * [Ultralytics 경로 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Test/DIA-YOLO-Test.py#L1-L16)
+
+    * [사용법](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Test/DIA-YOLO-Test.py#L18-L29)
+
+      ⮑ 파이썬 파일을 실행할 때 조건 및 경로를 지정
+
+    * [기울어진 객체 처리](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Test/DIA-YOLO-Test.py#L31-L41)
+
+      ⮑ 지향적 객체 검출(Oriented Object Bounding Box) 모델에서는 출력된 결과에서 기울기를 계산
+
+    * [클래스별 검출 색상 지정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Test/DIA-YOLO-Test.py#L50-L70)
+
+      ⮑ 모델은 검출 결과를 수치로 전달하기 때문에 이를 시각화하는 과정에서 직접 클래스에 따른 색상을 지정해야 함
+
+    * [모델 검출](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Test/DIA-YOLO-Test.py#L91-L98)
+
+      ⮑ 입력이 4채널이기 때문에 시각화하여 저장하기 위한 3채널 BGR 이미지를 따로 정의, results에는 모델의 검출 결과가 저장되며 저장경로, confidence, 이미지 크기 등에 대한 조건이 반영
+
+    * [결과 처리](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Test/DIA-YOLO-Test.py#L100-L119)
+
+      ⮑ results 속 OBB 결과에서 좌표 및 기울기 정보를 추출하여 시각화용 이미지에 라벨링하여 이미지로 저장
+   
+    
 </details>
 
 --------------
