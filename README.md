@@ -41,7 +41,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/model-architecture.png" width="700" alt="f-AnoGAN architecture">
+  <img src="figure/model-architecture.png" width="1000" alt="f-AnoGAN architecture">
 </div>
 
 #### 세부 구조
@@ -80,7 +80,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/specific-architecture.png" width="700" alt="f-AnoGAN architecture">
+  <img src="figure/specific-architecture.png" width="800" alt="f-AnoGAN architecture">
 </div>
 
 
@@ -98,7 +98,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/데이터구성.png" width="350" alt="f-AnoGAN architecture">
+  <img src="figure/데이터구성.png" width="1000" alt="f-AnoGAN architecture">
 </div>
 
 <details>
@@ -113,7 +113,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/데이터종류.png" width="700" alt="f-AnoGAN architecture">
+  <img src="figure/데이터종류.png" width="800" alt="f-AnoGAN architecture">
 </div>
 
 --------------
