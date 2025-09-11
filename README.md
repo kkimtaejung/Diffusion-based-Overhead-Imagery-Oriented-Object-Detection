@@ -139,7 +139,7 @@
      
         ⮑ 4채널이 입력되도록 하기위해 직접 Ultralytics 폴더에 접근하여 Involution 함수를 정의하고 4채널에 맞게 설계해줌 (* yaml 파일만 번경하면 안됨 주의.)
 
-    * [Haed](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L25-L46)
+    * [Head](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L25-L46)
    
       ⮑ 기존의 YOLO 11 OBB와 다른 점은 Concat 이후 사이사이에 CBAM(Convolution Block Attention Module)이 추가됨
 
@@ -230,18 +230,19 @@
 
 ## <span id="jump1">Citation</span>
 ```
-@ARTICLE{10902408,
-  author={Kim, Tae-Jung and Ha, Min-Ho and Arshad, Saba and Park, Tae-Hyoung},
+@ARTICLE{11142761,
+  author={Kim, Tae-Jung and Park, Tae-Hyoung},
   journal={IEEE Access}, 
-  title={MIN: Moiré Inpainting Network With Position Adaptive Mask for 3-D Height Reconstruction}, 
+  title={DIA-YOLO: Diffusion-Based Involution Attention YOLO for Overhead Imagery}, 
   year={2025},
   volume={13},
   number={},
-  pages={37501-37513},
-  keywords={Image reconstruction;Printed circuits;Reflection;Generative adversarial networks;Context modeling;Height measurement;Integrated circuit modeling;Computational modeling;Solid modeling;Adaptive systems;Artificial intelligence;computer vision;generative adversarial networks;image inpainting;anomaly detection;Moiré;printed circuit board},
-  doi={10.1109/ACCESS.2025.3545748}}
+  pages={150570-150582},
+  keywords={Feature extraction;YOLO;Real-time systems;Printed circuits;Diffusion models;Kernel;Indexes;Data models;Computational modeling;Training;Oriented object detection;overhead imagery;diffusion model;YOLO;involution;convolutional block attention module},
+  doi={10.1109/ACCESS.2025.3603214}}
 ```
 
 --------------
 ## Acknowledgments
-This project is based on [CSA-inpainting](https://github.com/KumapowerLIU/CSA-inpainting), and we have modified the model structure for our specific research objectives.
+This project is based on [YOLO 11 OBB](https://github.com/ultralytics/ultralytics), and we have modified the model structure for our specific research objectives.
+This project also based on [Marigold](https://github.com/prs-eth/Marigold), and we have used the model inference for our specific research objectives.
