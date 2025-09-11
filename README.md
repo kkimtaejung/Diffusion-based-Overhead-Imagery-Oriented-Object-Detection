@@ -127,14 +127,22 @@
   
   * [모델 구성 파일](DIA-YOLO/Model/DIA-YOLO-Model.yaml)
     
-    * [모델 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L0-L10)
+    * [모델 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L1-L9)
 
       ⮑ 클래스 개수, 입력 채널 수, 모델 크기(n, s, m, l, x) 설정
+      
+      * [Involution](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Ultralytics-Folder/ultralytics/nn/modules/conv.py/#L27-L49)
+     
+        ⮑ 4채널이 입력되도록 하기위해 직접 Ultralytics 폴더에 접근하여 Involution 함수를 정의하고 4채널에 맞게 설계해줌 (* yaml 파일만 번경하면 안됨 주의.)
+
+    * [Backbone](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L11-L23)
+
+      ⮑ 기존의 YOLO 11 OBB와 다른 점은 입력단이 Involution으로 대체되었음
 
   
   * [학습 코드](DIA-YOLO/Train/DIA-YOLO-Train.py)
 
-    * [임시](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L0-L10)
+    * [임시](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L1-L9)
 
   * [테스트 코드]()
 </details>
