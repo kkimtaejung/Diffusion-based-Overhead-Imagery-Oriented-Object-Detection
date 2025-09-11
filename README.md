@@ -130,7 +130,9 @@
     * [모델 크기](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L0-L10)
 
   :
-  * [학습 코드](DIA-YOLO/Train/DIA-YOLO-Train.yaml)
+  * [학습 코드](DIA-YOLO/Train/DIA-YOLO-Train.py)
+
+    * [임시](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L0-L10)
 
   * [테스트 코드]()
 </details>
