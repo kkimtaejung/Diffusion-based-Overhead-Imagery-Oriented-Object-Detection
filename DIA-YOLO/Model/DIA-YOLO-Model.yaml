@@ -1,5 +1,5 @@
-nc: 1 # Class number
-ch: 4  # 입력 채널을 4채널(RGB+D)로 사용
+nc: 1 # 클래스 개수
+ch: 4  # 입력 채널 수, 4채널(RGB+D)로 설정
 scales:
   # [depth, width, max_channels]
   n: [0.50, 0.25, 1024] # summary: 344 layers, 2695747 parameters, 2695731 gradients, 6.9 GFLOPs
@@ -8,7 +8,6 @@ scales:
   #l: [1.00, 1.00, 512] # summary: 656 layers, 26220995 parameters, 26220979 gradients, 91.3 GFLOPs
   #x: [1.00, 1.50, 512] # summary: 656 layers, 58875331 parameters, 58875315 gradients, 204.3 GFLOPs
 
-# YOLO11n backbone
 backbone:
   # [from, repeats, module, args]
   - [-1, 1, Involution, [4, 7, 1]] # 0-P1/2
@@ -23,7 +22,6 @@ backbone:
   - [-1, 1, SPPF, [1024, 5]] # 9
   - [-1, 2, C2PSA, [1024]] # 10
 
-# YOLO11n head
 head:
   - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
   - [[-1, 6], 1, Concat, [1]]
