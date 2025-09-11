@@ -127,12 +127,12 @@
   
   * [모델 구성 파일](DIA-YOLO/Model/DIA-YOLO-Model.yaml)
     
-    * [모델 크기](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L0-L10)
+    * [모델 크기](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L1-L10)
 
   :
   * [학습 코드](DIA-YOLO/Train/DIA-YOLO-Train.py)
 
-    * [임시](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L0-L10)
+    * [임시](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Train/DIA-YOLO-Train.py#L1-L10)
 
   * [테스트 코드]()
 </details>
