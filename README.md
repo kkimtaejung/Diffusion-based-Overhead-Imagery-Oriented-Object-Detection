@@ -41,7 +41,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/model-architecture.png" width="700" alt="f-AnoGAN architecture">
+  <img src="figure/model-architecture.png" width="1000" alt="f-AnoGAN architecture">
 </div>
 
 #### 세부 구조
@@ -54,12 +54,20 @@
 - 이후 추정된 깊이 맵을 RGB 영상과 동일한 값의 범위(0 ~ 255)로 정규화를 진행합니다.
 
 - 정규화된 깊이 맵 D와 RGB 영상과의 채널 축 합성을 진행하여 4채널의 RGBD 데이터를 취득합니다.
-  
+
+</details>
+
+<details>
+
  <summary> Involution </summary>
 
 - 기존 YOLO ver.11의 backbone에서 입력단의 Convolution을 Involution으로 대체합니다.
 
 - Involution에서는 동적 커널을 통해 RGBD 데이터의 깊이 정보를 고려하여 위치별로 다른 커널 값을 적용하여 특징을 추출합니다.
+
+</details>
+
+<details>
 
  <summary> CBAM </summary>
 
@@ -72,7 +80,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/specific-architecture.png" width="700" alt="f-AnoGAN architecture">
+  <img src="figure/specific-architecture.png" width="800" alt="f-AnoGAN architecture">
 </div>
 
 
@@ -90,7 +98,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/데이터구성.png" width="350" alt="f-AnoGAN architecture">
+  <img src="figure/데이터구성.png" width="1000" alt="f-AnoGAN architecture">
 </div>
 
 <details>
@@ -105,7 +113,7 @@
 </details>
 
 <div align="center">
-  <img src="figure/데이터종류.png" width="700" alt="f-AnoGAN architecture">
+  <img src="figure/데이터종류.png" width="800" alt="f-AnoGAN architecture">
 </div>
 
 --------------
@@ -116,9 +124,20 @@
 <details>
  <summary> Marigold (DFF 모듈) </summary>
 
-  * [Marigold 학습 코드]()
+  * [학습 코드](Marigold/train.py)
 
-  * [Marigold 추론 코드]()
+    * [경로 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Marigold/train.py#L34-L38)
+
+      ⮑ 학습 진행 시 원래는 데이터셋 경로 및 체크포인트 경로를 설정해주어야 함, 해당 코드에서 미리 경로만 설정해두면 이후 사용시 문제없음
+      ⮑ 데이터셋은 Hypersim에 예시로 만들어 둔 형태를 활용, train 폴더를 tar로 압축하여 Hypersim 에 놓고 사용
+
+    * [데이터 파일 이름 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Marigold/data_split/hypersim)
+
+      ⮑ TXT 파일
+
+  * [추론 코드](Marigold/infer.py)
+
+    
 
 </details>
 
@@ -139,7 +158,7 @@
      
         ⮑ 4채널이 입력되도록 하기위해 직접 Ultralytics 폴더에 접근하여 Involution 함수를 정의하고 4채널에 맞게 설계해줌 (* yaml 파일만 번경하면 안됨 주의.)
 
-    * [Haed](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L25-L46)
+    * [Head](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/DIA-YOLO/Model/DIA-YOLO-Model.yaml#L25-L46)
    
       ⮑ 기존의 YOLO 11 OBB와 다른 점은 Concat 이후 사이사이에 CBAM(Convolution Block Attention Module)이 추가됨
 
@@ -194,7 +213,7 @@
 
 --------------
 
-## 실행 가이드라인
+## Marigold 실행 가이드라인
 
 * 레포지토리 클론
     ```
@@ -202,7 +221,98 @@
     ```
 * 가상환경에 라이브러리 설치
     ```
-    pip install -r requirements.txt
+    pip install -r Marigold/requirements.txt
+    pip install -r Marigold/requirements+.txt
+    pip install -r Marigold/requirements++.txt
+    ```
+* 학습 사전 설정
+  * 기존 깃허브 [Marigold](https://github.com/prs-eth/Marigold)에서는 여러 데이터셋에 대해 학습을 진행하지만, 커스텀 데이터 학습을 위해 Hypersim 만 학습되도록 재구성함
+  * train.py 경로 설정: 기본적으로 정의된 Hypersim 폴더 이름은 수정하지 않음(해당 이름으로 데이터셋을 불러오기에 내부 데이터만 바꿔주면 됨)
+    ```
+    os.environ['BASE_DATA_DIR'] = './Hypersim'
+    os.environ['BASE_CKPT_DIR'] = './checkpoint'
+    base_data_dir = os.environ['BASE_DATA_DIR']
+    base_ckpt_dir = os.environ['BASE_CKPT_DIR']
+    ```
+  * 데이터 파일 이름 설정: Hypersim 폴더 참고하여 데이터셋을 구성, [데이터 파일 이름](Marigold/data_split/hypersim)에서 아래와 같은 구성으로 데이터 파일 이름 변경
+    * 폴더, 파일 이름은 수정하지 않고 이미지를 바꿔넣는 방식을 추천(사유는 학습에서 파일 이름으로 불러오기 때문)
+    * 앞은 rgb 이미지, 뒤는 depth 이미지
+    ```
+    ./ai_001_002/rgb_cam_00_fr0000.png ./ai_001_002/depth_plane_cam_00_fr0000.png
+    ./ai_001_002/rgb_cam_00_fr0001.png ./ai_001_002/depth_plane_cam_00_fr0001.png
+    ./ai_001_002/rgb_cam_00_fr0002.png ./ai_001_002/depth_plane_cam_00_fr0002.png
+    ./ai_001_002/rgb_cam_00_fr0003.png ./ai_001_002/depth_plane_cam_00_fr0003.png
+    ./ai_001_002/rgb_cam_00_fr0004.png ./ai_001_002/depth_plane_cam_00_fr0004.png
+    ```
+  * Tar 파일 설정: 학습 시 Tar 파일에서 데이터를 불러오기 때문에 Hypersim 폴더 내부 train 폴더를 tar로 압축 생성
+    * 이때 valid tar 파일도 설정해야 하며, 위에서 txt 파일에 정의한 이름으로 불러오기 때문에 같은 경로로 설정해줌
+    ```
+    tar -cf hypersim/hypersim_processed_train.tar -C Hypersim/hypersim train
+    tar -cf hypersim/hypersim_processed_val.tar -C Hypersim/hypersim train
+    ```
+* 학습 시작
+  * 이때 실행되면 한 번 락이 걸리기 때문에 Ctrl + C 눌러줘야 함
+    ```
+    python train.py
+    ```
+* 테스트 사전 설정
+  * .yaml 경로 설정: 추론에 앞서 추론할 데이터 경로를 직접 지정하여 설정할 수 있음
+    ```
+    name: hypersim                # 건들이면 피곤해짐
+    disp_name: hypersim_val_all   # 이것도 건들일 필요없이 그냥 사용
+    dir: ./Inference-Datasets/PCB-Mirtec/PCB.tar                # 학습과 동일한 형태의 tar 데이터 파일
+    filenames:./Inference-Datasets/PCB-Mirtec/pcb-mirtec.txt    # 데이터 파일 이름 위 학습과 동일한 형태로 설정
+    ```
+  * .sh 경로 설정: 추론에서는 sh 파일을 실행시키기 때문에 [.sh 파일 경로](Marigold/script/eval)에서 sh 파일을 수정해야 함
+    ```
+    #!/usr/bin/env bash
+    set -e
+    set -x
+
+    export BASE_DATA_DIR='./Inference-Datasets/PCB-Mirtec' # 추론 데이터 폴더 경로(폴더 이름 임의 지정 가능)
+
+    # Use specified checkpoint path, otherwise, default value
+    ckpt=${1:-"prs-eth/marigold-v1-0"} # 여기서는 기존 깃허브에 사전학습된 모델을 추론용도로만 사용
+    subfolder=${2:-"eval"}
+
+    python infer.py  \
+        --checkpoint $ckpt \
+        --seed 1234 \
+        --base_data_dir $BASE_DATA_DIR \
+        --denoise_steps 5 \               # step 수가 올라갈수록 품질 향상, 추론 시간 늘어남
+        --ensemble_size 1 \               # size 수가 올라갈수록 품질 향상, 추론 시간 늘어남
+        --dataset_config config/dataset/PCB.yaml \          # 앞선 yaml 파일 경로
+        --output_dir output/${subfolder}/PCB/5-1-256 \      # 결과 저장할 폴더 이름
+        --processing_res 256 \                              # 추론 결과 이미지 사이즈
+        --resample_method bilinear \
+        --output_processing_res \
+    ```
+* 테스트 시작
+  * 256, 1024 사이즈별로 sh 파일 실행, 커스텀 가능
+  * 이때 추론 결과는 npy 형식으로 [추론 결과 경로](Marigold/output/eval)에 지정했던 폴더 이름으로 존재
+    ```
+    bash script/eval/256-PCB-inference.sh
+    bash script/eval/1024-PCB-inference.sh
+    ```
+* 시각화 후 RGBD 데이터 생성
+  * [이미지로의 시각화](Marigold/output/npy-image.py)에서 입력, 출력 폴더 경로 수정 후 아래로 실행
+    ```
+    python npy-image.py
+    ```
+  * 이후 시각화 과정은 코드없이 핵심만 아래에 설명
+    1. npy 파일은 깊이 맵으로 값의 범위가 1000 이상으로 구성되며, 이를 0~255값으로 정규화해야 함
+    2. RGB와 정규화된 NPY를 채널 축으로 Concat 하여 4채널 데이터 구성
+
+## DIA-YOLO 실행 가이드라인
+
+* 레포지토리 클론
+    ```
+    git clone https://github.com/kkimtaejung/Research-for-Moire-3D-Reconstruction.git
+    ```
+* 가상환경에 라이브러리 설치
+  * Marigold 모델로 추론
+    ```
+    pip install -r DIA-YOLO/requirements.txt
     ```
 * train.py 에 데이터셋 경로 할당
     ```
@@ -230,18 +340,19 @@
 
 ## <span id="jump1">Citation</span>
 ```
-@ARTICLE{10902408,
-  author={Kim, Tae-Jung and Ha, Min-Ho and Arshad, Saba and Park, Tae-Hyoung},
+@ARTICLE{11142761,
+  author={Kim, Tae-Jung and Park, Tae-Hyoung},
   journal={IEEE Access}, 
-  title={MIN: Moiré Inpainting Network With Position Adaptive Mask for 3-D Height Reconstruction}, 
+  title={DIA-YOLO: Diffusion-Based Involution Attention YOLO for Overhead Imagery}, 
   year={2025},
   volume={13},
   number={},
-  pages={37501-37513},
-  keywords={Image reconstruction;Printed circuits;Reflection;Generative adversarial networks;Context modeling;Height measurement;Integrated circuit modeling;Computational modeling;Solid modeling;Adaptive systems;Artificial intelligence;computer vision;generative adversarial networks;image inpainting;anomaly detection;Moiré;printed circuit board},
-  doi={10.1109/ACCESS.2025.3545748}}
+  pages={150570-150582},
+  keywords={Feature extraction;YOLO;Real-time systems;Printed circuits;Diffusion models;Kernel;Indexes;Data models;Computational modeling;Training;Oriented object detection;overhead imagery;diffusion model;YOLO;involution;convolutional block attention module},
+  doi={10.1109/ACCESS.2025.3603214}}
 ```
 
 --------------
 ## Acknowledgments
-This project is based on [CSA-inpainting](https://github.com/KumapowerLIU/CSA-inpainting), and we have modified the model structure for our specific research objectives.
+This project is based on [YOLO 11 OBB](https://github.com/ultralytics/ultralytics), and we have modified the model structure for our specific research objectives.
+This project also based on [Marigold](https://github.com/prs-eth/Marigold), and we have used the model inference for our specific research objectives.
