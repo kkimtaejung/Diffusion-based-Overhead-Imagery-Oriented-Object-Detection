@@ -126,18 +126,13 @@
 
   * [학습 코드](Marigold/train.py)
 
-    * [경로 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Marigold/train.py#L34-L38)
-
-      ⮑ 학습 진행 시 원래는 데이터셋 경로 및 체크포인트 경로를 설정해주어야 함, 해당 코드에서 미리 경로만 설정해두면 이후 사용시 문제없음
-      ⮑ 데이터셋은 Hypersim에 예시로 만들어 둔 형태를 활용, train 폴더를 tar로 압축하여 Hypersim 에 놓고 사용
-
-    * [데이터 파일 이름 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Marigold/data_split/hypersim)
-
-      ⮑ TXT 파일
+    ⮑ 내부적인 수정은 경로만 수정
 
   * [추론 코드](Marigold/infer.py)
 
-    
+    ⮑ 내부정
+
+  * 이후 수정 파일들도 학습/추론을 위해 미세 수정, 아래의 실행 가이드라인을 참고
 
 </details>
 
@@ -303,8 +298,10 @@
     python npy-image.py
     ```
   * 이후 시각화 과정은 코드없이 핵심만 아래에 설명
-    * npy 파일은 깊이 맵으로 값의 범위가 1000 이상으로 구성되며, 이를 0~255값으로 정규화해야 함
-    * RGB와 정규화된 NPY를 채널 축으로 Concat 하여 4채널 데이터 구성
+
+    npy 파일은 깊이 맵으로 값의 범위가 1000 이상으로 구성되며, 이를 0~255값으로 정규화해야 함
+
+    RGB와 정규화된 NPY를 채널 축으로 Concat 하여 4채널 데이터 구성
 
 ## DIA-YOLO 실행 가이드라인
 
