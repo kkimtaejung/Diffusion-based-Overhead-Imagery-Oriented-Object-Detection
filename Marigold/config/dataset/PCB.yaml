@@ -1,4 +1,4 @@
 name: hypersim
 disp_name: hypersim_val_all
-dir: /home/a/Desktop/Vision/AI-CHAMPION/Marigold-All-file/Inference-Datasets/PCB-Mirtec/PCB.tar
-filenames: /home/a/Desktop/Vision/AI-CHAMPION/Marigold-All-file/Inference-Datasets/PCB-Mirtec/pcb-mirtec.txt
+dir: ./Inference-Datasets/PCB-Mirtec/PCB.tar
+filenames: ./Inference-Datasets/PCB-Mirtec/pcb-mirtec.txt

@@ -1,37 +1,13 @@
-# An official reimplemented version of Marigold training script
-# Last modified: 2024-05-17
-#
-# Copyright 2023 Bingxin Ke, ETH Zurich. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# --------------------------------------------------------------------------
-# If you find this code useful, we kindly ask you to cite our paper in your work.
-# Please find bibtex at: https://github.com/prs-eth/Marigold#-citation
-# More information about the method can be found at https://marigoldmonodepth.github.io
-# --------------------------------------------------------------------------
-
 import argparse
 import logging
 import os
 import shutil
 from datetime import datetime, timedelta
 from typing import List
-
 import torch
 from omegaconf import OmegaConf
 from torch.utils.data import ConcatDataset, DataLoader
 from tqdm import tqdm
-
 from marigold.marigold_pipeline import MarigoldPipeline
 from src.dataset import BaseDepthDataset, DatasetMode, get_dataset
 from src.dataset.mixed_sampler import MixedBatchSampler
@@ -53,15 +29,11 @@ from src.util.logging_util import (
     tb_logger,
 )
 from src.util.slurm_util import get_local_scratch_dir, is_on_slurm
-
 import os
 
-# 환경 변수 설정
-os.environ['BASE_DATA_DIR'] = './Hypersim' # directory of training data
-os.environ['BASE_CKPT_DIR'] = './checkpoint' # directory of pretrained checkpoint
-
-
-# 설정된 환경 변수 사용
+# 미리 데이터셋 경로, 체크포인트(stable diffusion) 경로 설정하여 따로 설정할 필요 없음
+os.environ['BASE_DATA_DIR'] = './Hypersim'
+os.environ['BASE_CKPT_DIR'] = './checkpoint'
 base_data_dir = os.environ['BASE_DATA_DIR']
 base_ckpt_dir = os.environ['BASE_CKPT_DIR']
 
