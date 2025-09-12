@@ -235,8 +235,11 @@
     base_ckpt_dir = os.environ['BASE_CKPT_DIR']
     ```
   * 데이터 파일 이름 설정: Hypersim 폴더 참고하여 데이터셋을 구성, [데이터 파일 이름](Marigold/data_split/hypersim)에서 아래와 같은 구성으로 데이터 파일 이름 변경
+
     폴더, 파일 이름은 수정하지 않고 이미지를 바꿔넣는 방식을 추천(사유는 학습에서 파일 이름으로 불러오기 때문)
+
     앞은 rgb 이미지, 뒤는 depth 이미지
+
     ```
     ./ai_001_002/rgb_cam_00_fr0000.png ./ai_001_002/depth_plane_cam_00_fr0000.png
     ./ai_001_002/rgb_cam_00_fr0001.png ./ai_001_002/depth_plane_cam_00_fr0001.png
