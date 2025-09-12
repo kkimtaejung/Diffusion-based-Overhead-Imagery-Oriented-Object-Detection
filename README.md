@@ -124,9 +124,20 @@
 <details>
  <summary> Marigold (DFF 모듈) </summary>
 
-  * [Marigold 학습 코드]()
+  * [학습 코드](Marigold/train.py)
 
-  * [Marigold 추론 코드]()
+    * [경로 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Marigold/train.py#L34-L38)
+
+      ⮑ 학습 진행 시 원래는 데이터셋 경로 및 체크포인트 경로를 설정해주어야 함, 해당 코드에서 미리 경로만 설정해두면 이후 사용시 문제없음
+      ⮑ 데이터셋은 Hypersim에 예시로 만들어 둔 형태를 활용, train 폴더를 tar로 압축하여 Hypersim 에 놓고 사용
+
+    * [데이터 파일 이름 설정](https://github.com/kkimtaejung/Diffusion-based-Overhead-Imagery-Oriented-Object-Detection/blob/main/Marigold/data_split/hypersim)
+
+      ⮑ 학습 진행 시 원래는 데이터셋 경로 및 체크포인트 경로를 설정해주어야 함, 해당 코드에서 미리 경로만 설정해두면 이후 사용시 문제없음
+
+  * [추론 코드](Marigold/infer.py)
+
+    
 
 </details>
 
